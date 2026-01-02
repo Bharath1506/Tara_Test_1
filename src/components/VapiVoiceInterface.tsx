@@ -35,20 +35,6 @@ const VapiVoiceInterface = ({ employeeName, managerName, okrData, onCallEnd }: V
     const [inputText, setInputText] = useState("");
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    const hasStartedCall = useRef(false);
-
-    // Auto-start call on mount
-    useEffect(() => {
-        if (!hasStartedCall.current) {
-            startCall();
-            hasStartedCall.current = true;
-        }
-        return () => {
-            endCall();
-            hasStartedCall.current = false;
-        };
-    }, [startCall, endCall]);
-
     // Auto-scroll to bottom of chat
     useEffect(() => {
         if (scrollRef.current) {
